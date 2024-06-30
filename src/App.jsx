@@ -50,15 +50,15 @@ const App = () => {
         section,
         data: detailsData,
       });
+      setIsLoading(false);
     } catch (error) {
       console.error(`Error fetching ${section} for user ${userId}:`, error);
-    } finally {
       setIsLoading(false);
     }
   };
 
   const handleUserDetailsClick = async (userId, section) => {
-    if (selectedUserId === userId) {
+    if (selectedUserId === userId && activeSection === section) {
       setShowUserDetails((prevState) => !prevState);
     } else {
       setSelectedUserId(userId);
